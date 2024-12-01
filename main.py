@@ -2,10 +2,6 @@ import pygame
 
 from constants import SCREEN_WIDTH
 from constants import SCREEN_HEIGHT
-from constants import ASTEROID_MIN_RADIUS
-from constants import ASTEROID_KINDS
-from constants import ASTEROID_SPAWN_RATE
-from constants import ASTEROID_MAX_RADIUS
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
@@ -63,7 +59,7 @@ def main():
                 return
             for shot in shots:
                 if ast.detect_collision(shot):
-                    ast.kill()
+                    ast.split()
                     shot.kill()
 
         # Next frame
