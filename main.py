@@ -7,6 +7,8 @@ from constants import ASTEROID_KINDS
 from constants import ASTEROID_SPAWN_RATE
 from constants import ASTEROID_MAX_RADIUS
 from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 
 def main():
@@ -27,11 +29,15 @@ def main():
     # Obj groups
     updateable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
 
     Player.containers = (updateable, drawable)
+    Asteroid.containers = (asteroids, updateable, drawable)
+    AsteroidField.containers = (updateable)
 
     # Game Objects
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    asteroid_field = AsteroidField()
     
     while True:
         for event in pygame.event.get():
