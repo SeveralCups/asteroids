@@ -52,6 +52,12 @@ def main():
             obj.update(dt)
         for obj in drawable:
             obj.draw(screen)
+        
+        # Check for collision
+        for ast in asteroids:
+            if ast.detect_collision(player):
+                print("        Game over!")
+                return
 
         # Next frame
         pygame.display.flip()
