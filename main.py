@@ -6,6 +6,7 @@ from constants import ASTEROID_MIN_RADIUS
 from constants import ASTEROID_KINDS
 from constants import ASTEROID_SPAWN_RATE
 from constants import ASTEROID_MAX_RADIUS
+from player import Player
 
 
 def main():
@@ -15,6 +16,8 @@ def main():
     dt = 0
     
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     print(
         f"""
@@ -31,6 +34,8 @@ def main():
                 return
 
         pygame.Surface.fill(screen, (0, 0, 0))
+        player.update(dt)
+        player.draw(screen)
         pygame.display.flip()
 
         # 60FPS
